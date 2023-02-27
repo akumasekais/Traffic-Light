@@ -1059,11 +1059,11 @@ MonoBehaviour:
   m_Options:
     m_Options:
     - m_Text: Knight
-      m_Image: {fileID: 0}
+      m_Image: {fileID: 21300000, guid: 919ddbce99f0b804ba604d7e8bfc3350, type: 3}
     - m_Text: Rogue
-      m_Image: {fileID: 0}
+      m_Image: {fileID: 21300000, guid: 00be1c5247aa3524eb753335c1a1cfbb, type: 3}
     - m_Text: Wizard
-      m_Image: {fileID: 0}
+      m_Image: {fileID: 21300000, guid: 6d8eba49d30559a4db95120c03fabb89, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1656,10 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   classText: {fileID: 2070879122}
-  classes:
-  - Knight
-  - Rogue
-  - Wizard
+  classBG: {fileID: 0}
   classDrop: {fileID: 0}
 --- !u!114 &698623640
 MonoBehaviour:
