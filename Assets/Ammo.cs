@@ -8,18 +8,36 @@ public class Ammo : MonoBehaviour
 {
 
     private int ammoCount;
+    private int ammoA;
+    private int ammoB;
+    private int ammoC;
     [SerializeField] Text ammoText;
-    private object inputField;
+    [SerializeField] private InputField inputField;
 
+    delegate void AmmoPickUpDelegate();
+    AmmoPickUpDelegate AmmoPickUp;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        AmmoPickUp += GetAmmoA;
+        AmmoPickUp += GetAmmoB;
+        AmmoPickUp += GetAmmoC;
+
         ammoCount = 69420;
         ammoText.text = "Current Ammo: " + ammoCount;
     }
-    private void ReduceAmmo()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AmmoPickUp();
+        }
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+
+        }
+    }
+    public void ReduceAmmo()
     {
         ammoCount -= 10;
         ammoText.text = "Current ammo" + ammoCount;
@@ -27,9 +45,24 @@ public class Ammo : MonoBehaviour
     public void IncreaseAmmo()
     {
 
-        ammoCount += int.Parse((string)inputField);
+        ammoCount += int.Parse(inputField.text);
         ammoText.text = "Current Ammo:" + ammoCount;
     }
+    public void GetAmmoA()
+    {
+        ammoA++;
+        Debug.Log("Got Ammo A");
 
+    }
+    public void GetAmmoB()
+    {
+        ammoB++;
+        Debug.Log("Got Ammo B");
+    }
+    public void GetAmmoC()
+    {
+        ammoC++;
+        Debug.Log("Got Ammo C");
+    }
 }
 

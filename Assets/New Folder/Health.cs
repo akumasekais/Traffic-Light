@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventManager.loseHealthEvent += ReduceHealth;
         float healthFlip = 1 - healthNormalized;
         healthSplat.color = new Color(healthSplat.color.r, healthSplat.color.g, healthSplat.color.b, healthFlip);
         healthNormalized = health / 100;

@@ -12,6 +12,7 @@ public class TrafficLight : MonoBehaviour
 
     public StateMachine StateMachine { get; private set; }
 
+    [SerializeField] string lightName;
     private void Awake()
     {
         Renderer = GetComponent<MeshRenderer>();
@@ -24,6 +25,8 @@ public class TrafficLight : MonoBehaviour
     void Start()
     {
         StateMachine.SetState(new RedLight(this));
+
+        EventManager.increaseCarsWaitingEvent += CarWaiting;
     }
 
     // Update is called once per frame
@@ -45,6 +48,31 @@ public class TrafficLight : MonoBehaviour
         }
         StateMachine.OnUpdate();
     }
+    public void ChangeLight (int lightID)
+    {
+        if(lightID == 0)
+        {
+            StateMachine.SetState(new GreenLight(this));
+
+        }
+        else if (lightID == 1 )
+        {
+            StateMachine.SetState(new OrangeLight(this));
+
+        }
+        else if (lightID == 2)
+        {
+            StateMachine.SetState(new RedLight(this));
+        }
+    }
+    public void CarWaiting(int carAmount, string _lightName)
+    {
+        if (_lightName == lightName)
+        {
+            waitingCars += carAmount;
+        }
+
+       }
 
     public enum TrafficLightID { green = 0, orange = 1, red = 2 }
     public abstract class TrafficLightState : IState
