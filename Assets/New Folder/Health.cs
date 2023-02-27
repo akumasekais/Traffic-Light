@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
 
     public Image healthSplat;
 
-    public Text healthText;
+   public Text healthText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
         healthSplat.color = new Color(healthSplat.color.r, healthSplat.color.g, healthSplat.color.b, healthFlip);
         healthNormalized = health / 100;
         healthBar.fillAmount = healthNormalized;
-        healthText.text = "Current Health" + health; 
+       healthText.text = "Current Health" + health; 
     }
 
     // Update is called once per frame
@@ -34,6 +34,19 @@ public class Health : MonoBehaviour
         healthSplat.color = new Color(healthSplat.color.r, healthSplat.color.g, healthSplat.color.b, healthFlip);
         healthNormalized = health / 100;
         healthBar.fillAmount = healthNormalized;
-        healthText.text = "Current Health" + health;
+       healthText.text = "Current Health" + health;
+    }
+
+    public void ReduceHealth(float _damage)
+    {
+        if(health - _damage < 0)
+        {
+            health -= _damage;
+        }
+        else
+        {
+            health = 0;
+        }
+      
     }
 }
