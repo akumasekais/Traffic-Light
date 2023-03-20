@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - car
+  - ForwardButt
+  - ReverseButt
+  - SteeringWheel
   layers:
   - Default
   - TransparentFX
